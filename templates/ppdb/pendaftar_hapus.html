@@ -1,0 +1,32 @@
+{% extends 'ppdb/base.html' %} {% load static %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<form method="post">{% csrf_token %}
+    <div class="w3-container">
+    	<h2 class="w3-red w3-center"><b>HAPUS</b></h2>
+		<table class="w3-table w3-responsive">
+        <thead>
+            <h4 rowspan="2" class=""><b>Data Pendaftar</b></h4>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Nomor Pendaftaran</td>
+                <td>: {{ pendaftar.nomor_pendaftaran }}</td>
+            </tr>
+            <tr>
+                <td>Nama</td>
+                <td>: {{ pendaftar.nama }}</td>
+            </tr>
+        </tbody>
+    </table>
+        <h4><p>Anda yakin ingin menghapus?</p></h4>
+    	
+    	<div class="w3-bar w3-center">
+    		<button onclick="window.history.back();" class="w3-blue w3-button w3-round" type="button">
+    			<i class="fa fa-times " aria-hidden="true "></i> batal</button></a>
+    		<button class="w3-red w3-button w3-round"><i class="fa fa-trash " aria-hidden="true "></i> hapus</button>
+    	</div>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,95 @@
+.sekolah,
+.aplikasi,
+.tahun {
+    text-align: center;
+    line-height: 90%;
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+.aplikasi {
+    padding-top: 15px;
+}
+
+#daftar-tambah {
+    padding-top: 50px;
+}
+
+.body {
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 0px;
+    font-size: xx-small;
+}
+
+.pendaftar-list {
+    font-size: small;
+    margin-left: 20%;
+    margin-right: 3%;
+}
+
+#data-nilai {
+    margin-left: 200px;
+}
+
+
+#tb-judul {
+    color: white;
+}
+
+#menu-samping {
+    font-size: small;
+    width: 15%;
+}
+
+#maker {
+    padding-top: 10px;
+    padding-right: 20px;
+    font-size: x-small;
+}
+
+.pagination {
+    padding-left: 15px;
+}
+
+
+.formulir {
+    margin-top: 0px;
+    text-align: left;
+}
+
+.title1 {
+    margin-top: 0px;
+}
+
+.title2,
+.title3 {
+    margin-top: 600px;
+}
+
+.title3 {
+    margin-top: 400px;
+}
+
+#data-pendaftar,
+#data-ortu,
+{
+    background-color: rgb(153, 255, 153) !important;
+    font-family: 'Ubuntu';
+}
+
+#data-nilai {
+    font-family: 'Ubuntu';
+    top: 0;
+    bottom: 0;
+}
+
+#dashboard, #export-page {
+    margin-left: 18%;
+    margin-right: 3%;
+}
+
+legend {
+    padding-top: 40px;
+    font-size: x-large;
+    font-weight: bold;
+}

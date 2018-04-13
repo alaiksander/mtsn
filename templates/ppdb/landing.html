@@ -1,0 +1,14 @@
+{% extends 'ppdb/base.html' %} {% load static %} {% block content %}
+
+<div class="container col-md-4 col-md-offset-4 w3-center">
+<h1 class="">Selamat Datang!</h1>
+<h4>Di MTs Negeri 2 Kudus</h4>
+</div>
+<div class="container col-md-2 col-md-offset-5">
+
+<p><a href="{% url 'pendaftar_new' %}"><button class="btn btn-info btn-block"><h2><b>DAFTAR</b></h2></button></a></p>
+<p class="w3-center">atau</p>
+<p class="w3-center"><a href="{% url 'login' %}">Login</p>
+</div>
+</div>
+{% endblock %}

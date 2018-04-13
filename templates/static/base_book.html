@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<title>MTs N 2 Kudus</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+		<!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
+	</head>
+	<body>
+
+		<div class="page-header">
+		<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+	    <h1><a href="/">Website MTs N 2 Kudus</a></h1>
+		</div>
+
+		<div class="content container">
+			<div class="row">
+				<div class="col-md-8">
+				{% block content %}
+				{% endblock %}
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

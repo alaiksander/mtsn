@@ -1,0 +1,49 @@
+{% load staticfiles %}
+
+<html>
+	<head>
+		<title>Website Resmi MTs N 2 Kudus</title>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+		<!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
+	</head>
+	
+	<body>
+		<div class="page-header">
+		{% if user.is_authenticated %}
+		<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+		{% endif %}
+
+		{% load static %}
+		<a href="/"><img src="{% static "logo.png" %}" alt="MTs Negeri 2 Kudus"></a>	
+		</div>
+		<div class="ahlan">
+		{% load static %}
+		<img src="{% static "ahlan.jpg" %}" alt="Ahlan Wa Sahlan">
+		</div>
+
+		<div class="content container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="blog-label">
+						Berita Terkini
+					</div>
+				{% block content %}
+				{% endblock %}
+				</div>
+			</div>
+		</div>
+	<div class="footer-space">
+		
+	</div>
+	<div class="footer">
+		<p class="sekolah">MTs Negeri 2 Kudus. Terakreditasi A</p>
+		<p class="nsm">Nomor Statistik Madrasah :  121133190002</p>
+		<p clascratch text editorss="copyright">Copyright &copy; 2018</p><br>
+	</div>
+	</body>
+
+</html>

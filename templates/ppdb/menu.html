@@ -1,0 +1,17 @@
+{% extends 'ppdb/base.html' %} {% load static %} {% block content %}
+
+<div class="w3-sidebar w3-bar-block w3-col s3 w3-black" id="menu-samping">
+    <h4 class="w3-center w3-red" style="padding: 10px 0px 0px 10px;"><b>Atsbat-X</b></h4>
+    <a href="{% url 'ppdb' %}" class="w3-bar-item w3-button">
+      <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>
+    <a href="{% url 'pendaftar_list' %}" class="w3-bar-item w3-button">
+      <i class="fa fa-list-ul" aria-hidden="true"></i> Pendaftar</a>
+    <a href="#" class="w3-bar-item w3-button">
+      <i class="fa fa-check-square" aria-hidden="true"></i>  Daftar Ulang</a>
+    <a href="{% url 'export_page' %}" class="w3-bar-item w3-button">
+      <i class="fa fa-exchange" aria-hidden="true"></i> Export Data</a>
+    <a href="{% url 'logout' %}" class="w3-bar-item w3-button">
+      <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+    <p><h6 class="w3-center">Versi 0.1 &copy; 2018</h6></p>
+</div>
+{% endblock %}

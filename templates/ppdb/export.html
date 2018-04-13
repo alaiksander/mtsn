@@ -1,0 +1,12 @@
+{% extends 'ppdb/base.html' %} {% load static %} {% block content %}
+{% include 'ppdb/menu.html' %}
+
+<div class="w3-container" id="export-page">
+<h2><b>Export</b></h2>
+
+<p><a href="{% url 'export_pendaftar' %}"><button class="w3-button w3-green w3-round">Format EMIS (.csv)</button></a></p>
+<p><a href="{% url 'export_pendaftar_nilai' %}"><button class="w3-button w3-blue w3-round">Pengolahan Nilai (.csv)</button></a></p>
+
+<h6>* Untuk penilaian lebih lanjut menggunakan Ms.Excel silahkan download klik Pengolahan Nilai (.csv), sedangkan untuk import ke Emis silahkan klik Format EMIS (.csv)</h6>
+</div>
+{% endblock %}

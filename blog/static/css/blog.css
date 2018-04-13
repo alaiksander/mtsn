@@ -1,0 +1,28 @@
+h1, h2 {
+	color: #fff;
+	font-weight: bold;
+
+}
+
+body {
+	font-family: 'Ubuntu';
+}
+
+.ul1 {
+	color: #DCEDC8;
+}
+
+#kamad, #sejarah, #gukar {
+	display: block;
+	height: 400px;
+}
+
+#dari-blog {
+	display: block;
+	height: 400px;
+}
+
+#vimis {
+	display: block;
+	height: 1200px;
+}

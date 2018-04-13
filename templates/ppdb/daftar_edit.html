@@ -1,0 +1,208 @@
+{% extends 'ppdb/base.html' %} 
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+    <h1>Formulir Pendaftaran</h1>
+    <form method="POST" class="w3-input w3-col l6">{% csrf_token %}
+        <h2>Data Pendaftar</h2>
+	        <!-- <ul class="w3-ul">{{ form.as_ul }}</ul> -->
+			<h1 class="w3-col l8 w3-center"><strong><u>Detail Pendaftar</u></strong></h1>
+
+<!-- Data Pendaftar -->
+<div class="w3-container">
+    <table class="w3-table w3-striped w3-responsive">
+        <thead>
+            <h2 rowspan="2" class="w3-col l8"><b>Data Pendaftar</b></h2>
+        </thead>
+        <tbody>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Nomor Pendaftaran</td>
+                <td class="w3-col l6">: {{ pendaftar.nomor_pendaftaran }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Nama</td>
+                <td class="w3-col l6">: {{ pendaftar.nama }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Jenis Kelamin</td>
+                <td class="w3-col l6">: {{ pendaftar.jenis_kelamin }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Tempat Lahir</td>
+                <td class="w3-col l6">: {{ pendaftar.tempat_lahir }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Tanggal Lahir</td>
+                <td class="w3-col l6">: {{ pendaftar.tanggal_lahir }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Agama</td>
+                <td class="w3-col l6">: {{ pendaftar.agama_anak }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Anak ke-</td>
+                <td class="w3-col l6">: {{ pendaftar.anak_ke }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Saudara Kandung</td>
+                <td class="w3-col l6">: {{ pendaftar.jumlah_saudara_kandung }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Asal Sekolah</td>
+                <td class="w3-col l6">: {{ pendaftar.asal_sekolah }}</td>
+            </tr>
+        </tbody>
+</div>
+
+<!-- Data Orang Tua/Wali -->
+<div class="w3-container">
+    <table class="w3-table w3-striped w3-responsive">
+        <thead>
+            <h2 rowspan="2" style="padding-top: 20px;"><b>Data  Orang Tua/Wali</b></h2>
+        </thead>
+        <tbody>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Nama Ayah</td>
+                <td class="w3-col l6">: {{ pendaftar.nama_ayah }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Nama Ibu</td>
+                <td class="w3-col l6">: {{ pendaftar.nama_ibu }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Pendidikan Ayah</td>
+                <td class="w3-col l6">: {{ pendaftar.pendidikan_ayah }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Pendidikan Ibu</td>
+                <td class="w3-col l6">: {{ pendaftar.pendidikan_ibu }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Pekerjaan Ayah</td>
+                <td class="w3-col l6">: {{ pendaftar.pekerjaan_ayah }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Pekerjaan Ibu</td>
+                <td class="w3-col l6">: {{ pendaftar.pekerjaan_ibu }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Agama Ayah</td>
+                <td class="w3-col l6">: {{ pendaftar.agama_ayah }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Agama Ibu</td>
+                <td class="w3-col l6">: {{ pendaftar.agama_ibu }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Alamat Orang Tua</td>
+                <td class="w3-col l6">: {{ pendaftar.alamat_orang_tua }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">No. Telepon</td>
+                <td class="w3-col l6">: {{ pendaftar.no_telepon }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Nama Wali</td>
+                <td class="w3-col l6">: {{ pendaftar.nama_wali }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Pendidikan Wali</td>
+                <td class="w3-col l6">: {{ pendaftar.pendidikan_wali }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Agama Wali</td>
+                <td class="w3-col l6">: {{ pendaftar.agama_wali }}</td>
+            </tr>
+            <tr class="w3-col l8">
+                <td class="w3-col l3">Alamat Wali</td>
+                <td class="w3-col l6">: {{ pendaftar.alamat_wali }}</td>
+            </tr>
+        </tbody>
+</div>
+
+<!-- Data Nilai -->
+<div class="w3-container">
+    <table class="w3-table">
+        <h2 rowspan="2" style="padding-top: 20px;"><b>Data Nilai</b></h2>
+        <table class="w3-table w3-bordered w3-responsive">
+                <thead class="">
+                    <tr class="w3-col l8 w3-light-grey">
+                        <th class="w3-col l2">Kelas</th>
+                        <th class="w3-col l2">Mapel</th>
+                        <th class="w3-col l2">Gasal</th>
+                        <th class="w3-col l2">Genap</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="w3-col l8">
+                        <td rowspan="3" class="w3-col l2">Kelas 4</td>
+                        <td class="w3-col l2">B. Indonesia</td>
+                        <td class="w3-col l2">{{ pendaftar.indo_kelas4_smt1 }}</td>
+                        <td class="w3-col l2">{{ pendaftar.indo_kelas4_smt2 }}</td>
+                    </tr>
+                    <tr class="w3-col l8">
+                    	<td class="w3-col l2"></td>
+                        <td class="w3-col l2">Matematika</td>
+                        <td class="w3-col l2">{{ pendaftar.mtk_kelas4_smt1 }}</td>
+                        <td class="w3-col l2">{{ pendaftar.mtk_kelas4_smt2 }}</td>
+                    </tr>
+                    <tr class="w3-col l8">
+                    	<td class="w3-col l2"></td>
+                        <td class="w3-col l2">IPA</td>
+                        <td class="w3-col l2">{{ pendaftar.ipa_kelas4_smt1 }}</td>
+                        <td class="w3-col l2">{{ pendaftar.ipa_kelas4_smt2 }}</td>
+                    </tr>
+                    <tr class="w3-col l8">
+                        <td rowspan="3" class="w3-col l2">Kelas 5</td>
+                        <td class="w3-col l2">B.Indonesia</td>
+                        <td class="w3-col l2">{{ pendaftar.indo_kelas5_smt1 }}</td>
+                        <td class="w3-col l2">{{ pendaftar.indo_kelas5_smt2 }}</td>
+                    </tr>
+                    <tr class="w3-col l8">
+                    	<td class="w3-col l2"></td>
+                        <td class="w3-col l2">Matematika</td>
+                        <td class="w3-col l2">{{ pendaftar.mtk_kelas5_smt1 }}</td>
+                        <td class="w3-col l2">{{ pendaftar.mtk_kelas5_smt2 }}</td>
+                    </tr>
+                    <tr class="w3-col l8">
+                    	<td class="w3-col l2"></td>
+                        <td class="w3-col l2">IPA</td>
+                        <td class="w3-col l2">{{ pendaftar.ipa_kelas5_smt1 }}</td>
+                        <td class="w3-col l2">{{ pendaftar.ipa_kelas5_smt2 }}</td>
+                    </tr>
+                    <tr class="w3-col l8">
+                        <td rowspan="3" class="w3-col l2">Kelas 6</td>
+                        <td class="w3-col l2">B.Indonesia</td>
+                        <td class="w3-col l2">{{ pendaftar.indo_kelas6_smt1 }}</td>
+                        <td class="w3-col l2"></td>
+                    </tr>
+                    <tr class="w3-col l8">
+                    	<td class="w3-col l2"></td>
+                        <td class="w3-col l2">Matematika</td>
+                        <td class="w3-col l2">{{ pendaftar.mtk_kelas6_smt1 }}</td>
+                        <td class="w3-col l2"></td>
+                    </tr>
+                    <tr class="w3-col l8">
+                    	<td class="w3-col l2"></td>
+                        <td class="w3-col l2">IPA</td>
+                        <td class="w3-col l2">{{ pendaftar.ipa_kelas6_smt1 }}</td>
+                        <td class="w3-col l2"></td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+ 
+<div class="w3-container" style="padding: 50px 0px 50px 0px;">
+<div class="w3-bar w3-center w3-col l8">
+  <button onclick="window.history.back();" class="w3-black w3-round w3-button" type="button">
+                <i class="fa fa-times " aria-hidden="true "></i> batal</button></a>
+  <a href="{% url 'pendaftar_delete' pk=pendaftar.pk %}"><button class="w3-button w3-round w3-red"><i class="fa fa-trash" aria-hidden="true"></i> hapus</button></a>
+  <a href="{% url 'pendaftar_edit' pk=pendaftar.pk %}"><button class="w3-button w3-round w3-green"><i class="fa fa-pencil" aria-hidden="true"></i> edit</button></a>
+  <button class="w3-button w3-round w3-blue"><i class="fa fa-print" aria-hidden="true"></i> cetak</button>
+</div>
+</div>
+        
+        <!-- <button type="submit" class="save btn btn-light btn-sm">  Save  </button> -->
+    </form>
+{% endblock %}

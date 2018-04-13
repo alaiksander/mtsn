@@ -1,0 +1,21 @@
+{% extends 'ppdb/base.html' %} {% load static %} {% block content %}
+{% include 'ppdb/menu.html' %}
+
+<div class="w3-row" id="dashboard">
+	<strong><h5 class="w3-center">Aplikasi Penerimaan Peserta Didik Baru</h5>
+	<h4 class="w3-center">MTs Negeri 2 Kudus</h4>
+	<h5 class="w3-center">Tahun Pelajaran 2018/2019</h5></strong><br>
+  <div class="w3-col s4 w3-green w3-center">
+  	<p><h4 class="w3-light-grey" style="padding: 16px;">Jumlah Pendaftar</p></h4>
+  	<p><h1 class="w3-center">{{ jumlah }}</h1></p>
+  </div>
+  <div class="w3-col s4 w3-dark-grey w3-center">
+  	<p><h4 class="w3-light-grey" style="padding: 16px;">Daftar Ulang</p></h4>
+  	<p><h1 class="w3-center">0</h1></p>
+  </div>
+  <div class="w3-col s4 w3-red w3-center">
+  	<p><h4 class="w3-light-grey" style="padding: 16px;">Tidak diterima</p></h4>
+  	<p><h1 class="w3-center">0</h1></p>
+  </div>
+</div>
+{% endblock %}
