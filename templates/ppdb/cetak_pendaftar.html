@@ -1,0 +1,269 @@
+{% extends 'ppdb/base.html' %}{% load staticfiles %} {% block content %}
+<div class="w3-container" style="width: 8.5in; height: 11in;">
+	<table>
+		<tr>
+			<td rowspan="4" style="width: 150pt;"><img src="/static/kemenag.jpg" style="width: 104px; height: 100px;"></td>
+		</tr>
+	    <tr>
+	    	<td><p class="w3-center cetak" style="font-size: 14pt;" ">PANITIA PENERIMAAN PESERTA DIDIK BARU</p></td>
+	    </tr>
+	    <tr>
+	    	<td><p class="w3-center cetak " style="font-size: 18pt; ">MTs NEGERI 2 KUDUS</p></td>
+	    </tr>
+	    <tr>
+	    	<td><p class="w3-center cetak " style="font-weight: normal; ">Jl. Mejobo No. 1327A Desa Jepang, Kec. Mejobo, Kab. Kudus</p></td>
+	    </tr>
+	</table>
+    <p style="border-bottom: 2pt solid black; "></p>
+    <p class="w3-center " style="font-size: 14pt; font-weight: bold; ">DATA CALON PESERTA DIDIK BARU</p>
+    <div class="w3-container ">
+        <table class="w3-small ">
+            <tr>
+                <td class="besar ">DATA PENDAFTAR</td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td>Nomor Pendaftaran</td>
+                <td>: {{ pendaftar.nomor_pendaftaran }}</td>
+            </tr>
+            <tr>
+                <td>Nama</td>
+                <td>: {{ pendaftar.nama }}</td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin</td>
+                <td>: {{ pendaftar.jenis_kelamin }}</td>
+            </tr>
+            <tr>
+                <td>Tempat Lahir</td>
+                <td>: {{ pendaftar.tempat_lahir }}</td>
+            </tr>
+            <tr>
+                <td>Tanggal Lahir</td>
+                <td>: {{ pendaftar.tanggal_lahir|date:"j F Y " }}</td>
+            </tr>
+            <tr>
+                <td>Agama</td>
+                <td>: {{ pendaftar.agama_anak }}</td>
+            </tr>
+            <tr>
+                <td>Anak ke-</td>
+                <td>: {{ pendaftar.anak_ke }}</td>
+            </tr>
+            <tr>
+                <td>Saudara Kandung</td>
+                <td>: {{ pendaftar.jumlah_saudara_kandung }}</td>
+            </tr>
+            <tr>
+                <td>Asal Sekolah</td>
+                <td>: {{ pendaftar.alamat_orang_tua }}</td>
+            </tr>
+            <tr>
+                <td class="besar ">DATA ORANG TUA</td>
+            </tr>
+            <tr>
+                <td>Nama Ayah</td>
+                <td>: {{ pendaftar.nama_ayah }}</td>
+            </tr>
+            <tr>
+                <td>Nama Ibu</td>
+                <td>: {{ pendaftar.nama_ibu }}</td>
+            </tr>
+            <tr>
+                <td>Pendidikan Ayah</td>
+                <td>: {{ pendaftar.pendidikan_ayah }}</td>
+            </tr>
+            <tr>
+                <td>Pendidikan Ibu</td>
+                <td>: {{ pendaftar.pendidikan_ibu }}</td>
+            </tr>
+            <tr>
+                <td>Pekerjaan Ayah</td>
+                <td>: {{ pendaftar.pekerjaan_ayah }}</td>
+            </tr>
+            <tr>
+                <td>Pekerjaan Ibu</td>
+                <td>: {{ pendaftar.pekerjaan_ibu }}</td>
+            </tr>
+            <tr>
+                <td>Agama Ayah</td>
+                <td>: {{ pendaftar.agama_ayah }}</td>
+            </tr>
+            <tr>
+                <td>Agama Ibu</td>
+                <td>: {{ pendaftar.agama_ibu }}</td>
+            </tr>
+            <tr>
+                <td>Alamat Orang Tua</td>
+                <td>: {{ pendaftar.alamat_orang_tua }}</td>
+            </tr>
+            <tr>
+                <td>No. Telepon</td>
+                <td>: {{ pendaftar.no_telepon }}</td>
+            </tr>
+        
+            <tr>
+                <td class="besar ">DATA WALI</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Nama Wali</td>
+                <td>: {{ pendaftar.nama_wali}}</td>
+            </tr>
+            <tr>
+                <td>Pendidikan Wali</td>
+                <td>: {{ pendaftar.pendidikan_wali}}</td>
+            </tr>
+            <tr>
+                <td>Agama Wali</td>
+                <td>: {{ pendaftar.agama_wali}}</td>
+            </tr>
+            <tr>
+                <td>Alamat Wali</td>
+                <td>: {{ pendaftar.alamat_wali}}</td>
+            </tr>
+            <tr>
+                <td class="besar ">NILAI RAPOR</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Rata-rata B.Indonesia </td>
+                <td>: {{ pendaftar.RerataIndo|floatformat:1 }}</td>
+            </tr>
+            <tr>
+                <td>Rata-rata Matematika </td>
+                <td>: {{ pendaftar.RerataMtk|floatformat:1 }}</td>
+            </tr>
+            <tr>
+                <td>Rata-rata IPA </td>
+                <td>: {{ pendaftar.RerataIpa|floatformat:1 }}</td>
+            </tr>
+            <tr>
+                <td>Rata-rata Mapel</td>
+                <td>: {{ pendaftar.RerataMapel|floatformat:1 }}</td>
+            </tr>
+        </table>
+    </div>
+    <p style="border-bottom: 1px solid black;"></p>
+    <div>
+        <table class=" ">
+            <td style="padding-right: 30pt;">
+                <table class="w3-small " style="width: 3.6in; border: 1px solid black; ">
+                        <tr>
+                            <td class="w3-center " colspan="2 "><strong>PANITIA PENERIMAAN PESERTA DIDIK BARU</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="w3-center " colspan="2 " style="font-size: 13pt; "><strong>MTs NEGERI 2 KUDUS</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="w3-center w3- " colspan="2 ">Jl. Mejobo No.1327 A, Mejobo, Kudus. Telp.0291-431580</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2 " style="border-bottom: 2px solid black; "></td>
+                        </tr>
+                        <tr>
+                            <td class="w3-center " colspan="2 "><strong>KARTU UJIAN SELEKSI CBT</strong></td>
+                        </tr>
+                        <tr>
+                            <td class=" ">Nomor Pendaftaran</td>
+                            <td class=" ">: {{ pendaftar.nomor_pendaftaran }}</td>
+                        </tr>
+                        <tr>
+                            <td class=" ">Password</td>
+                            <td>: {{ pendaftar.password_pendaftaran }}</td>
+                        </tr>
+                        <tr>
+                            <td class=" ">Nama</td>
+                            <td>: {{ pendaftar.nama }}</td>
+                        </tr>
+                        <tr>
+                            <td class=" ">TTL</td>
+                            <td>: {{ pendaftar.tempat_lahir }}, {{ pendaftar.tanggal_lahir|date:"j F Y " }}</td>
+                        </tr>
+                        <tr style="height: 20pt; "> </tr>
+                        
+                        <tr>
+                            <td></td>
+                            <td class="w3-center ">Mengetahui, </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="w3-center ">Kepala madrasah</td>
+                        </tr>
+                        <tr>
+                            <td class="w3-center ">Foto</td>
+                            <td class="w3-center ">ttd.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="w3-center ">Drs.H. Khamdi</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="w3-center ">NIP. 19670409 199403 1 002</td>
+                        </tr>
+                    </table>
+                    <p class="w3-small" style="line-height: 1pt;">Pengumuman tanggal 31 Mei 2018 jam 09:00WIB</p>
+            </td>
+            <td style="padding-left: 30pt; border-left: 1px solid black;">
+                <table>
+                    <table class="w3-small " style="width: 3.6in; border: 1px solid black; ">
+                        <tr>
+                            <td class="w3-center " colspan="2 "><strong>PANITIA PENERIMAAN PESERTA DIDIK BARU</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="w3-center " colspan="2 " style="font-size: 13pt; "><strong>MTs NEGERI 2 KUDUS</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="w3-center w3- " colspan="2 ">Jl. Mejobo No.1327 A, Mejobo, Kudus. Telp.0291-431580</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2 " style="border-bottom: 2px solid black; "></td>
+                        </tr>
+                        <tr>
+                            <td class="w3-center " colspan="2 "><strong>KARTU UJIAN SELEKSI CBT</strong></td>
+                        </tr>
+                        <tr>
+                            <td class=" ">Nomor Pendaftaran</td>
+                            <td class=" ">: {{ pendaftar.nomor_pendaftaran }}</td>
+                        </tr>
+                        <tr>
+                            <td class=" ">Password</td>
+                            <td>: {{ pendaftar.password_pendaftaran }}</td>
+                        </tr>
+                        <tr>
+                            <td class=" ">Nama</td>
+                            <td>: {{ pendaftar.nama }}</td>
+                        </tr>
+                        <tr>
+                            <td class=" ">TTL</td>
+                            <td>: {{ pendaftar.tempat_lahir }}, {{ pendaftar.tanggal_lahir|date:"j F Y " }}</td>
+                        </tr>
+                        <tr style="height: 20pt; "> </tr>
+                       
+                        <tr>
+                            <td></td>
+                            <td class="w3-center ">Mengetahui, </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="w3-center ">Kepala madrasah</td>
+                        </tr>
+                        <tr>
+                            <td class="w3-center ">Foto</td>
+                            <td class="w3-center ">ttd.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="w3-center ">Drs.H. Khamdi</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="w3-center ">NIP. 19670409 199403 1 002</td>
+                        </tr>
+                    </table>
+                    <p class="w3-small" style="line-height: 1pt;">Pengumuman tanggal 31 Mei 2018 jam 09:00WIB</p>
+            </td>
+    </div>
+</div>
+{% endblock %}

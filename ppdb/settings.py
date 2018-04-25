@@ -39,24 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # django packages
-    'django_tables2',
-    'crispy_forms',
-    # 'crudbuilder',
+    'widget_tweaks',
+    'dj_pagination',
 
     # local apps
     'pendaftaran',
     'blog',
-    'book',
-    # 'crud',
 
 
 ]
-# crudbuilder permisssion
-# LOGIN_REQUIRED_FOR_CRUD = True
-# PERMISSION_REQUIRED_FOR_CRUD = True
-
-# crispy_form default template setting
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -66,6 +57,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # adding Middleware
+    'dj_pagination.middleware.PaginationMiddleware',
 ]
 
 ROOT_URLCONF = 'ppdb.urls'
@@ -81,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -145,3 +140,9 @@ TEMPLATE_LOADERS = (
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 LOGIN_REDIRECT_URL = 'ppdb'
+TEMPLATE_CONTEXT_PROCESSORS: (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request")

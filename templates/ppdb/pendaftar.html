@@ -1,19 +1,21 @@
-{% extends 'ppdb/base.html' %} {% load static %} {% block content %}
-
-<!-- SIDEBAR MENU-->
-
-{% include 'ppdb/menu.html' %}
-
+{% extends 'ppdb/base.html' %} {% load static %} {% block content %} {% include 'ppdb/menu.html' %} {% load widget_tweaks %} {% load pagination_tags %}
 <div class="pendaftar-list">
-    <p class="aplikasi">Aplikasi Penerimaan Peserta Didik Baru</p>
+    <p class="aplikasi">Aplikasi Pendaftaran Online</p>
     <p class="sekolah">MTs Negeri 2 Kudus</p>
     <p class="tahun">Tahun Pelajaran 2018/2019</p>
-
-
-<!-- TAMBAH PENDAFTAR DAN PENCARIAN-->
-
+    <hr>
+    <!-- TAMBAH PENDAFTAR DAN PENCARIAN-->
+    <div class="w3-panel w3-pale-green w3-display-container">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-pale-green w3-large w3-display-topright">&times;</span>
+        <h5><strong>Tips:</strong></h5>
+        <li>Masukkan kata kunci pada input untuk pencarian, kemudian tekan enter.
+        Pencarian bisa menggunakan potongan atau bagian dari kata kunci.</li>
+        <li>Untuk mencetak form pendaftaran terisi, silahkan klik detail.</li>
+    </div>
+    
     <p>
-        <div class="w3-container w3-cell-row" id="daftar-tambah">
+        {% if user.is_authenticated %}
+        <div class="w3-container w3-cell-row">
             <div class="w3-container w3-cell">
                 <a href="{% url 'pendaftar_new' %}">
                     <button type="button" class="w3-button w3-round w3-blue">
@@ -21,117 +23,82 @@
                     </button>
                 </a>
             </div>
-            
-
-            <div class="w3-container w3-cell w3-right-align">
-                <form id="searchform" action="" method="get" accept-charset="utf-8">
-                    <button class="searchbutton" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                    <input class="searchfield" id="searchbox" name="q" type="text" placeholder="Search">
-                </form>
-            </div>
         </div>
+        {% endif %}
     </p>
+</div>
 
-
-<!-- TABEL PENDAFTAR -->
-<div>
-    <div class="w3-container w3-responsive" id="tabel-pendaftar">
-        <table class="w3-table-all w3-small">
-            <thead>
-                <tr class="w3-light-grey">
-                    
-                    <th>Kode</th>
-                    <th>Nama</th>
-                    <th>Asal Sekolah</th>
-                    <th>Bahasa Indonesia</th>
-                    <th>IPA</th>
-                    <th>Matematika</th>
-                    <th>Rata-Rata Mapel</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for pendaftar in pendaftar %}
-                <tr>
-                    
-                    <td><strong>{{ pendaftar.nomor_pendaftaran }}</strong></td>
-                    <td>{{ pendaftar.nama }}</td>
-                    <td>{{ pendaftar.asal_sekolah }}</td>
-                    <td>rerata</td>
-                    <td>rerata</td>
-                    <td>rerata</td>
-                    <td>{{ get_rerata_indo }}</td>
-                    <td scope="row">
-
-                        <!-- Tombol hapus -->
-
-                        <a href="{% url 'pendaftar_delete' pk=pendaftar.pk %}">
-                        <button type="button" class="w3-button w3-small w3-round w3-red data-toggle=" tooltip " data-placement="top " title="hapus "><i class="fa fa-trash " aria-hidden="true "></i> hapus
+<div class="w3-container pendaftar-list" id="">
+    <table class="w3-table w3-bordered w3-small w3-responsive">
+        <thead>
+            <tr class="w3-green">
+                <th>Kode</th>
+                <th>Nama</th>
+                <th>Asal Sekolah</th>
+                <th>Indo</th>
+                <th>IPA</th>
+                <th>Mtk</th>
+                <th>Rerata</th>
+                <th>Aksi</th>
+            </tr>
+            <tr class="w3-light-grey">
+                <form method="get">
+                    <th>
+                        <!-- <i class="fa fa-filter" aria-hidden="true"></i> -->
+                        {{ filter.form.nomor_pendaftaran|add_class:"w3-input w3-twothird" }}</th>
+                    <th>
+                        <!-- <i class="fa fa-filter" aria-hidden="true"></i> -->
+                        {{ filter.form.nama|add_class:"w3-input w3-twothird" }}</th>
+                    <th>
+                        <!-- <i class="fa fa-filter" aria-hidden="true"></i> -->
+                        {{ filter.form.asal_sekolah|add_class:"w3-input w3-twothird" }}</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>
+                        <button type="submit" class="w3-button w3-green">Cari</button>
+                    </th>
+            </tr>
+            </form>
+        </thead>
+        <tbody>
+            {% autopaginate filter.qs 25 as filter_list %} {% for pendaftar in filter_list %}
+            <tr>
+                <td>{{ pendaftar.nomor_pendaftaran }}</td>
+                <td>{{ pendaftar.nama }}</td>
+                <td>{{ pendaftar.asal_sekolah }}</td>
+                <td>{{ pendaftar.RerataIndo|floatformat:1 }}</td>
+                <td>{{ pendaftar.RerataIpa|floatformat:1 }}</td>
+                <td>{{ pendaftar.RerataMtk|floatformat:1 }}</td>
+                <td>{{ pendaftar.RerataMapel|floatformat:1 }}</td>
+                <td scope="row">
+                    {% if user.is_authenticated %}
+                    <!-- Tombol hapus -->
+                    <a href="{% url 'pendaftar_delete' pk=pendaftar.pk %}">
+                        <button type="button" class="w3-button w3-tiny w3-red data-toggle=" tooltip " data-placement="top " title="hapus "><i class="fa fa-trash " aria-hidden="true "></i> hapus
                         
                         </button>
                         </a>
-                        
-                        <!-- Tombol edit -->
-                        
-                        <a href="{% url 'pendaftar_edit' pk=pendaftar.pk %}">
-                        <button type="button" class="w3-button w3-small w3-round w3-green data-toggle="tooltip" data-placement="top" title="edit"><i class="fa fa-pencil" aria-hidden="true"></i> edit                        
+                    <!-- Tombol edit -->
+                    <a href="{% url 'pendaftar_edit' pk=pendaftar.pk %}">
+                        <button type="button" class="w3-button w3-tiny w3-green" data-toggle="tooltip" data-placement="top" title="edit"><i class="fa fa-pencil" aria-hidden="true"></i> edit
                         </button>
-                        </a>
-                        
-                        <!-- Tombol detail -->
-
-                        <a href="{% url 'pendaftar_detail' pk=pendaftar.pk %}">
-                        <button type="button" class="w3-button w3-small w3-round w3-blue"  data-toggle="tooltip" data-placement="top" title="detail"><i class="fa fa-search-plus" aria-hidden="true"></i> detail
+                    </a>
+                    <!-- Tombol detail -->
+                    <a href="{% url 'pendaftar_detail' pk=pendaftar.pk %}">
+                        <button type="button" class="w3-button w3-tiny w3-blue" data-toggle="tooltip" data-placement="top" title="detail"><i class="fa fa-search-plus" aria-hidden="true"></i> detail
                         </button>
-                        </a>
-                    </td>
-                
+                    </a>
+                    {% endif %}
+                </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="9 " class="text-center bg-warning ">Belum ada Pendaftar! Klik daftar untuk mendaftar.</td>
+                <td colspan="8" class="w3-center w3-light-grey">Tidak ada pendaftar dengan kata kunci tersebut!.</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <div class="w3-right-align" id="maker">&copy; alaiksander - 2018</div>
-
-    </div>
-
-
-<!-- PAGINATION -->
-
-    {% if pendaftar.has_other_pages %}
-    <nav>
-      <ul class="pagination" id="paginasi">
-        {% if pendaftar.has_previous %}
-          <li><a href="?page={{ pendaftar.previous_page_number }}">&laquo;</a></li>
-        {% else %}
-          <li class="disabled"><span>&laquo;</span></li>
-        {% endif %}
-
-        {% for i in pendaftar.paginator.page_range %}
-          {% if pendaftar.number == i %}
-            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-          {% else %}
-            <li><a href="?page={{ i }}">{{ i }}</a></li>
-          {% endif %}
-        {% endfor %}
-        
-        {% if pendaftar.has_next %}
-          <li><a href="?page={{ pendaftar.next_page_number }}">&raquo;</a></li>
-        {% else %}
-          <li class="disabled"><span>&raquo;</span></li>
-        {% endif %}
-
-      </ul>
-    </div>
-
-    {% endif %}
-</div>
-
-<!-- FOOTER -->
-{% endblock %}
+    {% paginate %} {% endblock %}
 </div>

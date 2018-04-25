@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9bcb947eeb6093df718300486d3806eb4455f4407344a948235f5aea611e7e6f"
+            "sha256": "9d5015b73cbcce667f261085337e0d6d5ff049af56aa1b55bc5592727b86b2b8"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -27,12 +27,19 @@
         ]
     },
     "default": {
+        "dj-pagination": {
+            "hashes": [
+                "sha256:1de4759d0270ba0444ec23e883ccf5a885a79660eaeaff9c106580ea86b5f3dd",
+                "sha256:987ef586b3a576637ae0f000c9edf83493304327d329f0e71b34613c7c784807"
+            ],
+            "version": "==2.3.2"
+        },
         "django": {
             "hashes": [
-                "sha256:3d9916515599f757043c690ae2b5ea28666afa09779636351da505396cbb2f19",
-                "sha256:769f212ffd5762f72c764fa648fca3b7f7dd4ec27407198b68e7c4abf4609fd0"
+                "sha256:2d8b9eed8815f172a8e898678ae4289a5e9176bc08295676eff4228dd638ea61",
+                "sha256:d81a1652963c81488e709729a80b510394050e312f386037f26b54912a3a10d0"
             ],
-            "version": "==2.0.3"
+            "version": "==2.0.4"
         },
         "django-crispy-forms": {
             "hashes": [
@@ -49,30 +56,23 @@
         },
         "django-tables2": {
             "hashes": [
-                "sha256:6f215e5f294ffa8aa433d284aa5851521a2d4f86a9fcebcd0b39ab9b56f12db7"
+                "sha256:c5c979201b7a2f7e88f2784dcd478e0c809d3a2053dea576cb71ce51676bbf7a"
             ],
-            "version": "==1.21.0"
+            "version": "==1.21.2"
         },
         "django-widget-tweaks": {
             "hashes": [
-                "sha256:0e8e3b7ebd1aafb2250d0f7614cfbad27017b3c727858ee3aee23748dd1f147d",
-                "sha256:0baee0b905286fde028fdbd0dd1d985d4656dab472b0fd4ca4cd556ee38a047e"
+                "sha256:f9961162c8ed272162e22e5877d29c7780476970441dce605118ef66da685e71",
+                "sha256:a31c8a2b88af98dba6471db4722a416d1c643c87efecf9a7f17f983a2a553632"
             ],
-            "version": "==1.4.1"
+            "version": "==1.4.2"
         },
         "pytz": {
             "hashes": [
-                "sha256:ed6509d9af298b7995d69a440e2822288f2eca1681b8cce37673dbb10091e5fe",
-                "sha256:f93ddcdd6342f94cea379c73cddb5724e0d6d0a1c91c9bdef364dc0368ba4fda",
-                "sha256:61242a9abc626379574a166dc0e96a66cd7c3b27fc10868003fa210be4bff1c9",
-                "sha256:ba18e6a243b3625513d85239b3e49055a2f0318466e0b8a92b8fb8ca7ccdf55f",
-                "sha256:07edfc3d4d2705a20a6e99d97f0c4b61c800b8232dc1c04d87e8554f130148dd",
-                "sha256:3a47ff71597f821cd84a162e71593004286e5be07a340fd462f0d33a760782b5",
-                "sha256:5bd55c744e6feaa4d599a6cbd8228b4f8f9ba96de2c38d56f08e534b3c9edf0d",
-                "sha256:887ab5e5b32e4d0c86efddd3d055c1f363cbaa583beb8da5e22d2fa2f64d51ef",
-                "sha256:410bcd1d6409026fbaa65d9ed33bf6dd8b1e94a499e32168acfc7b332e4095c0"
+                "sha256:65ae0c8101309c45772196b21b74c46b2e5d11b6275c45d251b150d5da334555",
+                "sha256:c06425302f2cf668f1bba7a0a03f3c1d34d4ebeef2c72003da308b3947c7f749"
             ],
-            "version": "==2018.3"
+            "version": "==2018.4"
         },
         "six": {
             "hashes": [

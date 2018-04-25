@@ -16,12 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from pendaftaran import views
-from crudbuilder import urls
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ppdb/', include('pendaftaran.urls')),
-    path('book/', include('book.urls')),
     path('', include('blog.urls')),
-    path('crud/', include('crudbuilder.urls')),
+
 ]

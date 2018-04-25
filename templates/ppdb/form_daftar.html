@@ -1,0 +1,169 @@
+{% extends 'ppdb/base.html' %} {% load static %} {% block content %}
+
+<!-- <h1 class="formulir">Formulir Pendaftaran</h1> -->
+
+{% load widget_tweaks %}
+
+<div>
+    <h2 class="w3-center w3-container w3-green"><b>FORMULIR PENDAFTARAN</b></h2>
+</div>
+<form method="POST">
+    {% csrf_token %}
+    <div class="w3-container w3-mobile" style="width: 40%; margin: auto; margin-bottom: 40px;">
+        <div class="w3-panel w3-pale-green w3-display-container w3-responsive w3-card">
+        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-red w3-large w3-display-topright">&times;</span>
+        <h5><strong>Info:</strong></h5>
+        <ul>
+            <li>Silahkan dowload selebaran PPDB 2018 <a href=""> disini </a></li>
+            <li>Isilah formulir ini dengan data yang sebenarnya.</li>
+            <li>Pendaftaran dibuka tanggal 10 Mei - 21 Mei 2018.</li>
+            <li>Setelah mendaftar secara online, berkas persyaratan <u><i>disampaikan ke panitia</i></u> untuk mendapatkan User dan Password untuk ujian seleksi.</li>
+            <li>Berkas diterima panitia paling lambat 25 Mei 2018 jam 15:00 WIB</li>
+            <li>Untuk pertanyaan silahkan menghubungi panitia via Whatsapp/SMS ke : 081-325-107-857</li>
+        </div>
+        <div class="w3-container w3-green">
+        <h3>Data Pribadi</h3>
+        </div>
+        <div class="w3-card-2 w3-container">
+            <p></p>
+            <label>Nama pendaftar</label>
+            <p>{{ form.nama|add_class:"w3-input" }}</p>
+            <label>Jenis Kelamin</label>
+            <p>{{ form.jenis_kelamin|add_class:"w3-input" }}</p>
+            <label>Tempat Lahir</label>
+            <p>{{ form.tempat_lahir|add_class:"w3-input" }}</p>
+            <label>Tanggal Lahir*</label>
+            <p>{{ form.tanggal_lahir|add_class:"w3-input"|append_attr:"placeholder: Format,  Hari-Bulan-Tahun misal; 25-06-2000"}}</p>
+            <label>Agama</label>
+            <p>{{ form.agama_anak|add_class:"w3-input" }}</p>
+            <label>Anak ke-</label>
+            <p>{{ form.anak_ke|add_class:"w3-input" }}</p>
+            <label>Saudara Kandung</label>
+            <p>{{ form.jumlah_saudara_kandung|add_class:"w3-input" }}</p>
+            <label class="w3-container">Asal Sekolah</label>
+            <p>{{ form.jenis_sekolah|add_class:"w3-input" }}</p>
+            <p>{{ form.asal_sekolah|add_class:"w3-input"|append_attr:"placeholder: Nama lengkap sekolah/madrasah " }}</p>
+        </div>
+    </div>
+    <div class="w3-container w3-mobile" style="width: 40%; margin: auto; margin-bottom: 40px;">
+        <div class="w3-container w3-green">
+        <h3>Data Orang Tua</h3>
+        </div>
+        <div class="w3-card-2 w3-container">
+            <p></p>
+            <label>Nama Ayah</label>
+            <p>{{ form.nama_ayah|add_class:"w3-input" }}</p>
+            <label>Pendidikan Ayah</label>
+            <p>{{ form.pendidikan_ayah|add_class:"w3-input" }}</p>
+            <label>Pekerjaan Ayah</label>
+            <p>{{ form.pekerjaan_ayah|add_class:"w3-input" }}</p>
+            <label>Agama Ayah</label>
+            <p>{{ form.agama_ayah|add_class:"w3-input" }}</p>
+            <label>Nama Ibu</label>
+            <p>{{ form.nama_ibu|add_class:"w3-input" }}</p>
+            <label>Pendidikan Ibu</label>
+            <p>{{ form.pendidikan_ibu|add_class:"w3-input" }}</p>
+            <label>Pekerjaan Ibu</label>
+            <p>{{ form.pekerjaan_ibu|add_class:"w3-input" }}</p>
+            <label>Agama Ibu</label>
+            <p>{{ form.agama_ibu|add_class:"w3-input" }}</p>
+            <label>Alamat Orang Tua</label>
+            <p>{{ form.alamat_orang_tua|add_class:"w3-input" }}</p>
+            <label>No.Telepon </label>
+            <p>{{ form.no_telepon|add_class:"w3-input" }}</p>
+        </div>
+    </div>
+    <div class="w3-container w3-mobile" style="width: 40%; margin: auto; margin-bottom: 40px;">
+        <div class="w3-container w3-green">
+        <h3>Data Wali*</h3>
+        </div>
+        <div class="w3-card-2 w3-container">
+            <p></p>
+            <label>Nama Wali</label>
+            <p>{{ form.nama_wali|add_class:"w3-input" }}</p>
+            <label>Pendidikan Wali</label>
+            <p>{{ form.pendidikan_wali|add_class:"w3-input" }}</p>
+            <label>Agama Wali</label>
+            <p>{{ form.agama_wali|add_class:"w3-input" }}</p>
+            <label>Alamat Wali</label>
+            <p>{{ form.alamat_wali|add_class:"w3-input" }}</p>
+            <p class="w3-small">* jika ada</p>
+        </div>
+    </div>
+    <div class="w3-containe w3-mobile" style="width: 60%; margin: auto; margin-bottom: 40px;">
+        <div class="w3-container w3-green">
+        <h3>Nilai Rapor</h3>
+        </div>
+        <div class="w3-card-2 w3-container">
+            <table class="w3-table w3-bordered w3-small">
+                <thead class="">
+                    <tr>
+                        <th>Kelas</th>
+                        <th>Mata Pelajaran</th>
+                        <th style="width: 20%;">Gasal</th>
+                        <th style="width: 20%;">Genap</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="3">Kelas 4</td>
+                        <td>B. Indonesia</td>
+                        <td>{{ form.indo_kelas4_smt1|add_class:"w3-input" }}</td>
+                        <td>{{ form.indo_kelas4_smt2|add_class:"w3-input" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Matematika</td>
+                        <td>{{ form.mtk_kelas4_smt1|add_class:"w3-input" }}</td>
+                        <td>{{ form.mtk_kelas4_smt2|add_class:"w3-input" }}</td>
+                    </tr>
+                    <tr>
+                        <td>IPA</td>
+                        <td>{{ form.ipa_kelas4_smt1|add_class:"w3-input" }}</td>
+                        <td>{{ form.ipa_kelas4_smt2|add_class:"w3-input" }}</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Kelas 5</td>
+                        <td>B.Indonesia</td>
+                        <td>{{ form.indo_kelas5_smt1|add_class:"w3-input" }}</td>
+                        <td>{{ form.indo_kelas5_smt2|add_class:"w3-input" }}</td>
+                    </tr>
+                    <tr>
+                        <td>Matematika</td>
+                        <td>{{ form.mtk_kelas5_smt1|add_class:"w3-input" }}</td>
+                        <td>{{ form.mtk_kelas5_smt2|add_class:"w3-input" }}</td>
+                    </tr>
+                    <tr>
+                        <td>IPA</td>
+                        <td>{{ form.ipa_kelas5_smt1|add_class:"w3-input" }}</td>
+                        <td>{{ form.ipa_kelas5_smt2|add_class:"w3-input" }}</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">Kelas 6</td>
+                        <td>B.Indonesia</td>
+                        <td>{{ form.indo_kelas6_smt1|add_class:"w3-input" }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Matematika</td>
+                        <td>{{ form.mtk_kelas6_smt1|add_class:"w3-input" }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>IPA</td>
+                        <td>{{ form.ipa_kelas6_smt1|add_class:"w3-input" }}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+           </div>
+    	</div>
+    {% if form.errors %} {% for error in form.errors %}
+    <p id="error_{{ forloop.counter }}_id)" class="help-block"> </p>
+        <strong>{{ error }}</strong> {% endfor %} {% endif %}
+        <div class="" style="margin: auto; width: 20%;"><b><input type="submit" name="submit" value="DAFTAR" class="w3-button w3-green w3-block"></b></div>
+</form>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+body, .body { 
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 1.2;
+    font-size: 10px;
+}
+
+/* This would create an h1 title that spans across the page */
+h3, h4, h5, h6, .h3, .h4, .h5, .h6 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	line-height: 0.5em;
+}
+
+
+.span { 
+  column-span: all;
+  break-before: column; 
+  break-inside: avoid-column; 
+  break-after: avoid-column;
+}
+
+.center {
+	text-align: center;
+}
+
+.kartu {
+	column-count: 2;
+	column-gap: 2em;
+	column-rule: thin solid black;
+	break-inside: avoid;
+	font-size: x-small;
+}
+
+#square {
+	width: 70px;
+	height: 90px;
+	border: thin solid black;
+}
+
+.press {
+	line-height: 0.8;
+
+}
+
+.foto {
+	float: left;
+	clear: left;
+}
+
+@media print {
+
+}
+
+@page {
+	size: 8.5in 11 in potrait;
+	margin: 1.5cm;
+}
+

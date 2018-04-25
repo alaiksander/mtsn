@@ -17,18 +17,24 @@ JENIS_KELAMIN = (
     ('Perempuan', 'P'),
 )
 
+SEKOLAH = (
+    ('SD', 'SD'),
+    ('MI', 'MI'),
+)
+
 
 class Pendaftar(models.Model):
     # -------- PESERTA DIDIK ---------
     nomor_pendaftaran = models.IntegerField(null=True)
     password_pendaftaran = models.CharField(max_length=5, default='12345')
     nama = models.CharField(max_length=50)
-    jenis_kelamin = models.CharField(max_length=10, choices=JENIS_KELAMIN, default='laki-laki',)
+    jenis_kelamin = models.CharField(max_length=10, choices=JENIS_KELAMIN, default='Laki-laki',)
     tempat_lahir = models.CharField(max_length=15, default='Kudus')
     tanggal_lahir = models.DateField(null=True)
-    agama_anak = models.CharField(max_length=10, choices=AGAMA, default='islam',)
+    agama_anak = models.CharField(max_length=10, choices=AGAMA, default='Islam',)
     anak_ke = models.CharField(max_length=2)
     jumlah_saudara_kandung = models.CharField(max_length=2, blank=True)
+    jenis_sekolah = models.CharField(max_length=2, choices=SEKOLAH, default='SD')
     asal_sekolah = models.CharField(max_length=50)
 
     # -------- ORANGTUA/WALI ---------
@@ -38,8 +44,8 @@ class Pendaftar(models.Model):
     pendidikan_ibu = models.CharField(max_length=25)
     pekerjaan_ayah = models.CharField(max_length=30)
     pekerjaan_ibu = models.CharField(max_length=30)
-    agama_ayah = models.CharField(max_length=10, choices=AGAMA, default='islam',)
-    agama_ibu = models.CharField(max_length=10, choices=AGAMA, default='islam',)
+    agama_ayah = models.CharField(max_length=10, choices=AGAMA, default='Islam',)
+    agama_ibu = models.CharField(max_length=10, choices=AGAMA, default='Islam',)
     alamat_orang_tua = models.CharField(max_length=200)
     no_telepon = models.CharField(max_length=12)
     nama_wali = models.CharField(max_length=50, default='-')
@@ -77,28 +83,27 @@ class Pendaftar(models.Model):
     def __unicode__(self):
         return self.nama
 
-    def get_rerata_indo(self):
+    def rerata_indo(self):
         indo = [self.indo_kelas4_smt1, self.indo_kelas4_smt2, self.indo_kelas5_smt2, self.indo_kelas5_smt2, self.indo_kelas6_smt1]
         return mean(indo)
 
-    def get_rerata_ipa(self):
+    def rerata_ipa(self):
         ipa = [self.ipa_kelas4_smt1, self.ipa_kelas4_smt2, self.ipa_kelas5_smt1, self.ipa_kelas5_smt2, self.ipa_kelas6_smt1]
-        return self.mean(ipa)
+        return mean(ipa)
 
-    def get_rerata_mtk(self):
+    def rerata_mtk(self):
         mtk = [self.mtk_kelas4_smt1, self.mtk_kelas4_smt2, self.mtk_kelas5_smt1, self.mtk_kelas5_smt2, self.mtk_kelas6_smt1]
-        return self.mean(mtk)
+        return mean(mtk)
 
-    # rerata_indo = get_rerata_indo()
-    # rerata_ipa = get_rerata_ipa()
-    # rerata_mtk = get_rerata_mtk()
+    RerataIndo = property(rerata_indo)
+    RerataMtk = property(rerata_ipa)
+    RerataIpa = property(rerata_ipa)
 
-    # @property
-    # def get_rerata_mapel(self):
-    #     rerata = [rerata_indo, rerata_ipa, rerata_mtk]
-    #     return mean(rerata)
+    def rerata_mapel(self):
+        mapel = [self.RerataIndo, self.RerataMtk, self.RerataIpa]
+        return mean(mapel)
 
-    # rerata_mapel = property(get_rerata_mapel)
+    RerataMapel = property(rerata_mapel)
 
 
 # class RegistrasiUlang(models.Model):

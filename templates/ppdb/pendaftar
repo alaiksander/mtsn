@@ -1,0 +1,130 @@
+{% extends 'ppdb/base.html' %} {% load static %} {% block content %}
+
+<!-- SIDEBAR MENU-->
+
+{% include 'ppdb/menu.html' %}
+
+<div class="pendaftar-list">
+    <p class="aplikasi">Aplikasi Pendaftaran Online</p>
+    <p class="sekolah">MTs Negeri 2 Kudus</p>
+    <p class="tahun">Tahun Pelajaran 2018/2019</p>
+
+
+<!-- TAMBAH PENDAFTAR DAN PENCARIAN-->
+
+    <p>
+        {% if user.is_authenticated %}
+        <div class="w3-container w3-cell-row" id="daftar-tambah">
+            <div class="w3-container w3-cell">
+                <a href="{% url 'pendaftar_new' %}">
+                    <button type="button" class="w3-button w3-round w3-blue">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i> Tambah
+                    </button>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </p>
+
+
+<!-- TABEL PENDAFTAR -->
+<div>
+    <div class="w3-container" id="tabel-pendaftar">
+        <table class="w3-table w3-striped w3-bordered w3-small w3-mobile">
+            <thead>
+                <tr class="w3-green">
+                    
+                    <th>Kode</th>
+                    <th>Nama</th>
+                    <th>Asal Sekolah</th>
+                    <th>B.Indo</th>
+                    <th>IPA</th>
+                    <th>Mtk</th>
+                    <th>Rerata</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pendaftar in pendaftar %}
+                <tr>
+                    
+                    <td><strong>{{ pendaftar.nomor_pendaftaran }}</strong></td>
+                    <td>{{ pendaftar.nama }}</td>
+                    <td>{{ pendaftar.asal_sekolah }}</td>
+                    <td>{{ pendaftar.RerataIndo }}</td>
+                    <td>{{ pendaftar.RerataIpa }}</td>
+                    <td>{{ pendaftar.RerataMtk }}</td>
+                    <td>{{ pendaftar.RerataMapel }}</td>
+                    <td scope="row">
+                        {% if user.is_authenticated %}
+                        <!-- Tombol hapus -->
+
+                        <a href="{% url 'pendaftar_delete' pk=pendaftar.pk %}">
+                        <button type="button" class="w3-button w3-tiny w3-red data-toggle=" tooltip " data-placement="top " title="hapus "><i class="fa fa-trash " aria-hidden="true "></i> hapus
+                        
+                        </button>
+                        </a>
+                        
+                        <!-- Tombol edit -->
+                        
+                        <a href="{% url 'pendaftar_edit' pk=pendaftar.pk %}">
+                        <button type="button" class="w3-button w3-tiny w3-green data-toggle="tooltip" data-placement="top" title="edit"><i class="fa fa-pencil" aria-hidden="true"></i> edit                        
+                        </button>
+                        </a>
+                        
+                        <!-- Tombol detail -->
+
+                        <a href="{% url 'pendaftar_detail' pk=pendaftar.pk %}">
+                        <button type="button" class="w3-button w3-tiny w3-blue"  data-toggle="tooltip" data-placement="top" title="detail"><i class="fa fa-search-plus" aria-hidden="true"></i> detail
+                        </button>
+                        </a>
+                        {% endif %}
+                    </td>
+                
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="9 " class="text-center bg-warning ">Belum ada Pendaftar! Klik daftar untuk mendaftar.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="w3-right-align" id="maker">&copy; alaiksander - 2018</div>
+
+    </div>
+
+
+<!-- PAGINATION -->
+
+    {% if pendaftar.has_other_pages %}
+    <nav>
+      <ul class="pagination" id="paginasi">
+        {% if pendaftar.has_previous %}
+          <li><a href="?page={{ pendaftar.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+
+        {% for i in pendaftar.paginator.page_range %}
+          {% if pendaftar.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+          {% else %}
+            <li><a href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        
+        {% if pendaftar.has_next %}
+          <li><a href="?page={{ pendaftar.next_page_number }}">&raquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+
+      </ul>
+    </div>
+
+    {% endif %}
+</div>
+
+<!-- FOOTER -->
+{% endblock %}
+</div>

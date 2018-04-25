@@ -1,12 +1,23 @@
 {% extends 'ppdb/base.html' %}
 
-{% block title %}Login{% endblock %}
 
+{% load widget_tweaks %}
 {% block content %}
-  <h2>Login</h2>
+  <div class="w3-container w3-display-middle w3-mobile" style="margin: 0 auto; width: 50%;">
+  <div class="w3-card w3-container w3-green w3-center"><h2>Login</h2></div>
+  <div class="w3-container w3-card">
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
+    <p></p>
+    <label>Username : </label>
+    <p>{{ form.username|add_class:"w3-input" }}</p>
+    <label>Password: </label>
+    <p>{{ form.password|add_class:"w3-input" }}</p>
+    <button type="submit" class="w3-button w3-blue">Login</button>
+    <hr>
+    <p class="w3-small">alpine v.0.1</p>
   </form>
+</div>
+</div>
+</div>
 {% endblock %}

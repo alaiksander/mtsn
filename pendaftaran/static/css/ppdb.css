@@ -15,16 +15,24 @@
     padding-top: 50px;
 }
 
-.body {
-    font-family: 'Times New Roman', Times, serif;
+body {
+    font-family: Tahoma, 'Times New Roman', Times, serif;
     margin-left: 0px;
-    font-size: xx-small;
+    font-size: small;
 }
 
+label {
+    font-weight: bold;
+
+}
 .pendaftar-list {
     font-size: small;
     margin-left: 20%;
     margin-right: 3%;
+}
+
+#tabel-pendaftar, #daftar-tambah {
+    width: 1000px;
 }
 
 #data-nilai {
@@ -45,10 +53,6 @@
     padding-top: 10px;
     padding-right: 20px;
     font-size: x-small;
-}
-
-.pagination {
-    padding-left: 15px;
 }
 
 
@@ -88,8 +92,14 @@
     margin-right: 3%;
 }
 
-legend {
-    padding-top: 40px;
-    font-size: x-large;
+.cetak {
+    line-height: 8pt;
     font-weight: bold;
+}
+
+.besar {
+    font-size: 14pt;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding-top: 10pt;
 }

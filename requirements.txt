@@ -1,7 +1,9 @@
-Django==2.0.2
-django-crispy-forms==1.7.2
-django-crudbuilder==0.2.7
-django-tables2==1.19.0
-django-widget-tweaks==1.4.1
-pytz==2017.3
-six==1.11.0
+dj-pagination (2.3.2)
+Django (2.0.2)
+django-filter (1.1.0)
+django-widget-tweaks (1.4.1)
+pip (9.0.1)
+pytz (2017.3)
+setuptools (38.5.1)
+six (1.11.0)
+wheel (0.30.0)

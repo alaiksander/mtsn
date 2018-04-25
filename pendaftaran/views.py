@@ -6,6 +6,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from statistics import mean
 from django.http import HttpResponse
 import csv
+from .filters import PendaftarFilter
+import random
 
 
 # Create your views here.
@@ -14,35 +16,11 @@ def landing(request):
     return render(request, 'ppdb/landing.html',)
 
 
-def post_register(request, pk):
-    pendaftar = get_object_or_404(Pendaftar, pk=pk)
-    kode = pendaftar.nomor_pendaftaran
-    kata_kunci = pendaftar.password_pendaftaran
-    return render(request, 'ppdb/landing_terdaftar.html', {'pendaftar': pendaftar})
-
-
 def ppdb(request):
     jumlah = Pendaftar.objects.all().count()
-    return render(request, 'ppdb/dashboard.html', {'jumlah': jumlah})
-
-
-''' List Pendaftar '''
-
-
-def pendaftar_list(request):
-    pendaftar = Pendaftar.objects.all()
-    pendaftar = Pendaftar.objects.order_by('-pk')
-
-    ''' PAGINATOR -- int adalah jumlah list per page (definition, int) '''
-    page = request.GET.get('page', 1)
-    paginator = Paginator(pendaftar, 25)
-    try:
-        pendaftar = paginator.page(page)
-    except PageNotAnInteger:
-        pendaftar = paginator.page(1)
-    except EmptyPage:
-        pendaftar = paginator.page(paginator.num_pages)
-    return render(request, 'ppdb/pendaftar.html', {'pendaftar': pendaftar})
+    dariSD = Pendaftar.objects.filter(jenis_sekolah='SD').count()
+    dariMI = Pendaftar.objects.filter(jenis_sekolah='MI').count()
+    return render(request, 'ppdb/dashboard.html', {'jumlah': jumlah, 'dariSD': dariSD, 'dariMI': dariMI})
 
 
 ''' Detail Pendaftar '''
@@ -51,6 +29,16 @@ def pendaftar_list(request):
 def pendaftar_detail(request, pk):
     pendaftar = get_object_or_404(Pendaftar, pk=pk)
     return render(request, 'ppdb/pendaftar_detail.html', {'pendaftar': pendaftar})
+
+
+''' Pendaftar  List'''
+
+
+def pendaftar_list(request):
+    pendaftar = Pendaftar.objects.all()
+    pendaftar = Pendaftar.objects.order_by('-pk')
+    filter = PendaftarFilter(request.GET, queryset=pendaftar)
+    return render(request, 'ppdb/pendaftar.html', {'filter': filter, 'pendaftar': pendaftar, })
 
 
 ''' Tambah Pendaftar '''
@@ -63,12 +51,13 @@ def pendaftar_new(request):
             pendaftar = form.save(commit=False)
             pendaftar.save()
             pendaftar.nomor_pendaftaran = pendaftar.id + 2018000
-            pendaftar.save(update_fields=['nomor_pendaftaran'])
-            return redirect('landing', pk=pendaftar.pk)
+            pendaftar.password_pendaftaran = random.randint(10000, 90000)
+            pendaftar.save(update_fields=['nomor_pendaftaran', 'password_pendaftaran'])
+            return redirect('pendaftar_list')
 
     else:
         form = PendaftarForm()
-    return render(request, 'ppdb/formulir.html', {'form': form})
+    return render(request, 'ppdb/form_daftar.html', {'form': form})
 
 
 ''' Edit Pendaftar '''
@@ -84,7 +73,7 @@ def pendaftar_edit(request, pk):
             return redirect('pendaftar_detail', pk=pendaftar.pk)
     else:
         form = PendaftarForm(instance=pendaftar)
-    return render(request, 'ppdb/formulir.html', {'form': form})
+    return render(request, 'ppdb/form_edit.html', {'form': form})
 
 
 ''' Hapus Pendaftar '''
@@ -95,6 +84,7 @@ def pendaftar_delete(request, pk):
     if request.method == 'POST':
         form = PendaftarForm(request.POST, instance=pendaftar)
         pendaftar.delete()
+        pendaftar.refresh_from_db()
         return redirect('pendaftar_list')
     else:
         form = PendaftarForm(instance=pendaftar)
@@ -106,7 +96,7 @@ def pendaftar_delete(request, pk):
 
 def export_pendaftar(request):
     export_db = HttpResponse(content_type='text/csv')
-    export_db['Content-Disposition'] = 'attachment; filename="ppdb.csv"'
+    export_db['Content-Disposition'] = 'attachment; filename="ppdb_emis.csv"'
 
     writer = csv.writer(export_db)
     writer.writerow(['id', 'nama', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'agama_anak',
@@ -126,7 +116,7 @@ def export_pendaftar(request):
 
 def export_pendaftar_nilai(request):
     export_db = HttpResponse(content_type='text/csv')
-    export_db['Content-Disposition'] = 'attachment; filename="ppdb.csv"'
+    export_db['Content-Disposition'] = 'attachment; filename="ppdb_nilai.csv"'
 
     writer = csv.writer(export_db)
     writer.writerow(['id', 'nomor_pendaftaran', 'nama', 'indo_kelas4_smt1', 'mtk_kelas4_smt1', 'ipa_kelas4_smt1', 'indo_kelas4_smt2',
@@ -142,5 +132,32 @@ def export_pendaftar_nilai(request):
     return export_db
 
 
+def export_cbt(request):
+    export_db = HttpResponse(content_type='text/csv')
+    export_db['Content-Disposition'] = 'attachment; filename="ppdb_cbt.csv"'
+
+    writer = csv.writer(export_db)
+    writer.writerow(['id', 'nama', 'nomor_pendaftaran', 'password_pendaftaran'])
+
+    pendaftars = Pendaftar.objects.all().values_list('id', 'nama', 'nomor_pendaftaran', 'password_pendaftaran')
+    for pendaftar in pendaftars:
+        writer.writerow(pendaftar)
+
+    return export_db
+
+
 def export_page(request):
     return render(request, 'ppdb/export.html')
+
+
+def registered(request):
+    return render(request, 'ppdb/registered.html')
+
+
+def print_pendaftar(request, pk):
+    pendaftar = get_object_or_404(Pendaftar, pk=pk)
+    return render(request, 'ppdb/cetak_pendaftar.html', {'pendaftar': pendaftar})
+
+
+def daftar_ulang(request):
+    return render(request, 'ppdb/daftar_ulang.html')

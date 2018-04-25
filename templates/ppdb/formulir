@@ -1,0 +1,11 @@
+{% extends 'ppdb/base.html' %} 
+{% load static %} 
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<div class="container">
+    <div>{% crispy form %}</div>
+</div>
+
+{% endblock %}

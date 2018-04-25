@@ -1,0 +1,202 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>alpine - cetak pendaftar baru</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> -->
+	<!-- <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"> -->
+	<link rel="stylesheet" href="{% static 'css/cetak.css' %}" media="print" />
+</head>
+<body>
+<div class="center span space">
+	<p><h6>PENERIMAAN PESERTA DIDIK BARU</h6></p>
+	<p><h4>MTs NEGERI 2 KUDUS</h4></p>
+	<p>Jl. Mejobo No. 1327A Desa Jepang, Kec. Mejobo, Kab. Kudus</p>
+	<hr>
+</div>
+<div class="span center"><p><strong>DATA CALON PESERTA DIDIK BARU</strong></p></div>
+
+<div class="w3-container">
+    <table>
+    	<tbody>
+        
+            <tr>
+            	<td><strong><p rowspan="2">DATA PENDAFTAR</p></strong></td>
+            </tr>
+            <tr>
+                <td>Nomor Pendaftaran</td>
+                <td>: <strong>{{ pendaftar.nomor_pendaftaran }}</strong></td>
+            </tr>
+            <tr>
+                <td>Nama</td>
+                <td>: {{ pendaftar.nama }}</td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin</td>
+                <td>: {{ pendaftar.jenis_kelamin }}</td>
+            </tr>
+            <tr>
+                <td>Tempat Lahir</td>
+                <td>: {{ pendaftar.tempat_lahir }}</td>
+            </tr>
+            <tr>
+                <td>Tanggal Lahir</td>
+                <td>: {{ pendaftar.tanggal_lahir }}</td>
+            </tr>
+            <tr>
+                <td>Agama</td>
+                <td>: {{ pendaftar.agama_anak }}</td>
+            </tr>
+            <tr>
+                <td>Anak ke-</td>
+                <td>: {{ pendaftar.anak_ke }}</td>
+            </tr>
+            <tr>
+                <td>Saudara Kandung</td>
+                <td>: {{ pendaftar.jumlah_saudara_kandung }}</td>
+            </tr>
+            <tr>
+                <td>Asal Sekolah</td>
+                <td>: {{ pendaftar.alamat_orang_tua }}</td>
+            </tr>
+            <tr>
+            	<td><p rowspan="2"><strong>DATA ORANG TUA</strong></p></td>
+            </tr>
+            <tr>
+                <td>Nama Ayah</td>
+                <td>: {{ pendaftar.nama_ayah }}</td>
+            </tr>
+            <tr>
+                <td>Nama Ibu</td>
+                <td>: {{ pendaftar.nama_ibu }}</td>
+            </tr>
+            <tr>
+                <td>Pendidikan Ayah</td>
+                <td>: {{ pendaftar.pendidikan_ayah }}</td>
+            </tr>
+            <tr>
+                <td>Pendidikan Ibu</td>
+                <td>: {{ pendaftar.pendidikan_ibu }}</td>
+            </tr>
+            <tr>
+                <td>Pekerjaan Ayah</td>
+                <td>: {{ pendaftar.pekerjaan_ayah }}</td>
+            </tr>
+            <tr>
+                <td>Pekerjaan Ibu</td>
+                <td>: {{ pendaftar.pekerjaan_ibu }}</td>
+            </tr>
+            <tr>
+                <td>Agama Ayah</td>
+                <td>: {{ pendaftar.agama_ayah }}</td>
+            </tr>
+            <tr>
+                <td>Agama Ibu</td>
+                <td>: {{ pendaftar.agama_ibu }}</td>
+            </tr>
+            <tr>
+                <td>Alamat Orang Tua</td>
+                <td>: {{ pendaftar.alamat_orang_tua }}</td>
+            </tr>
+            <tr>
+                <td>No. Telepon</td>
+                <td>: {{ pendaftar.no_telepon }}</td>
+			<tr>
+				<td><p rowspan="2"><strong>DATA WALI</p></strong></td>
+			</tr>
+			<tr>
+                <td>Nama Wali</td>
+                <td>: {{ pendaftar.nama_wali }}</td>
+            </tr>
+            <tr>
+                <td>Pendidikan Wali</td>
+                <td>: {{ pendaftar.pendidikan_wali }}</td>
+            </tr>
+            <tr>
+                <td>Agama Wali</td>
+                <td>: {{ pendaftar.agama_wali }}</td>
+            </tr>
+            <tr>
+                <td>Alamat Wali</td>
+                <td>: {{ pendaftar.alamat_wali }}</td>
+            </tr>
+            <tr>
+            	<td><strong><p rowspan="2">RERATA NILAI</p></strong></td>
+            </tr>
+            <tr>
+                <td>Bahasa Indonesia</td>
+                <td>: {{ pendaftar.RerataIndo }}</td>
+            </tr>
+            <tr>
+                <td>Matematika</td>
+                <td>: {{ pendaftar.RerataMtk }}</td>
+            </tr>
+            <tr>
+                <td>IPA</td>
+                <td>: {{ pendaftar.RerataIpa }}</td>
+            </tr>
+            <tr>
+                <td>Mapel</td>
+                <td>: {{ pendaftar.RerataMapel }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
+<div class="w3-container kartu">
+	<div class="w3-row">
+		<div class="w3-half w3-responsive">
+			<h5 class="center h5">PANITIA PENERIMAAN PESERTA DIDIK BARU</h5>
+			<h5 class="center h5">MTs NEGERI 2 KUDUS</h5>
+			<hr>
+			<div class="foto">
+			<table>
+			<tbody>
+					<tr>
+						<table>
+						<div class="w3-container w3-display-bottom" id="square">
+							Pas Foto
+						</img>
+						</div>
+						</tbody>
+						</table>
+					</tr>
+					<tr>
+						<table>
+						<tbody>
+						<tr>
+							<td>Nama</td>
+							<td>: {{ pendaftar.nama }}</td>
+						</tr>
+						<tr>
+							<td>Username</td>
+							<td>: {{ pendaftar.nomor_pendaftaran }}</td>
+						</tr>
+						<tr>
+							<td>Password</td>
+							<td>: {{ pendaftar.password_pendaftaran }}</td>
+						</tr>
+						</tbody>
+						</table>
+					</tr>
+			
+			</tbody>
+			</table>
+		</div>
+	</div>
+		<div class="w3-half">
+			<h6>PANITIA PENERIMAAN PESERTA DIDIK BARU</h6>
+			<p>MTs NEGERI 2 KUDUS</p>
+			<p>Nama: {{ pendaftar.nama }}</p>
+			<p>Username:{{ pendaftar.nomor_pendaftaran }}</p>
+			<p>Password:{{ pendaftar.password_pendaftaran }}</p>
+		</div>
+	</div>
+</div>
+
+<div><input type=button value="Print me!" onClick="javascript:window.print()"></div>
+
+</html>

@@ -11,6 +11,7 @@ django = "*"
 django-crudbuilder = "*"
 django-widget-tweaks = "*"
 django-crispy-forms = "*"
+dj-pagination = "*"
 
 
 [dev-packages]
