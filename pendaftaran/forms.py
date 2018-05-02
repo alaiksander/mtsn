@@ -1,7 +1,5 @@
-# Tutorial from: https://www.merixstudio.com/blog/django-crispy-forms-what-are-they-about/
-
 from django import forms
-from .models import Pendaftar
+from .models import Pendaftar, RegUlang
 
 
 class PendaftarForm(forms.ModelForm):
@@ -35,3 +33,9 @@ class PendaftarForm(forms.ModelForm):
             'ipa_kelas6_smt1': ('IPA'),
 
         }
+
+
+class RegUlangForm(forms.ModelForm):
+    class Meta:
+        model = RegUlang
+        fields = '__all__'

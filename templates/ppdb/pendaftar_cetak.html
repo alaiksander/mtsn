@@ -1,8 +1,8 @@
-{% extends 'ppdb/base.html' %}{% load staticfiles %} {% block content %}
+{% extends 'ppdb/base.html' %}{% load staticfiles %} {% load static %} {% block content %}
 <div class="w3-container" style="width: 8.5in; height: 11in;">
 	<table>
 		<tr>
-			<td rowspan="4" style="width: 150pt;"><img src="/static/kemenag.jpg" style="width: 104px; height: 100px;"></td>
+			<td rowspan="4" style="width: 150pt;"><img src="{% static "kemenag.jpg" %}" style="width: 104px; height: auto;"></td>
 		</tr>
 	    <tr>
 	    	<td><p class="w3-center cetak" style="font-size: 14pt;" ">PANITIA PENERIMAAN PESERTA DIDIK BARU</p></td>
@@ -11,7 +11,7 @@
 	    	<td><p class="w3-center cetak " style="font-size: 18pt; ">MTs NEGERI 2 KUDUS</p></td>
 	    </tr>
 	    <tr>
-	    	<td><p class="w3-center cetak " style="font-weight: normal; ">Jl. Mejobo No. 1327A Desa Jepang, Kec. Mejobo, Kab. Kudus</p></td>
+	    	<td><p class="w3-center cetak " style="font-weight: normal; font-size: 9pt;h">Jl. Mejobo No. 1327A Desa Jepang, Kec. Mejobo, Kab. Kudus Telp.0291-431580</p></td>
 	    </tr>
 	</table>
     <p style="border-bottom: 2pt solid black; "></p>
@@ -56,7 +56,7 @@
             </tr>
             <tr>
                 <td>Asal Sekolah</td>
-                <td>: {{ pendaftar.alamat_orang_tua }}</td>
+                <td>: {{ pendaftar.jenis_sekolah }} - {{ pendaftar.asal_sekolah }}</td>
             </tr>
             <tr>
                 <td class="besar ">DATA ORANG TUA</td>
@@ -144,7 +144,10 @@
             </tr>
         </table>
     </div>
-    <p style="border-bottom: 1px solid black;"></p>
+    <p style="border-bottom: 1px dashed black;"></p>
+
+<!-- KARTU PENDAFTARAN -->
+
     <div>
         <table class=" ">
             <td style="padding-right: 30pt;">
@@ -159,13 +162,16 @@
                             <td class="w3-center w3- " colspan="2 ">Jl. Mejobo No.1327 A, Mejobo, Kudus. Telp.0291-431580</td>
                         </tr>
                         <tr>
+                            <td class="w3-center w3- " colspan="2 ">Website: mtsn2kudus.sch.id</td>
+                        </tr>
+                        <tr>
                             <td colspan="2 " style="border-bottom: 2px solid black; "></td>
                         </tr>
                         <tr>
                             <td class="w3-center " colspan="2 "><strong>KARTU UJIAN SELEKSI CBT</strong></td>
                         </tr>
                         <tr>
-                            <td class=" ">Nomor Pendaftaran</td>
+                            <td class=" ">Username</td>
                             <td class=" ">: {{ pendaftar.nomor_pendaftaran }}</td>
                         </tr>
                         <tr>
@@ -205,7 +211,7 @@
                     </table>
                     <p class="w3-small" style="line-height: 1pt;">Pengumuman tanggal 31 Mei 2018 jam 09:00WIB</p>
             </td>
-            <td style="padding-left: 30pt; border-left: 1px solid black;">
+            <td style="padding-left: 30pt; border-left: 1px dashed black;">
                 <table>
                     <table class="w3-small " style="width: 3.6in; border: 1px solid black; ">
                         <tr>
@@ -218,13 +224,16 @@
                             <td class="w3-center w3- " colspan="2 ">Jl. Mejobo No.1327 A, Mejobo, Kudus. Telp.0291-431580</td>
                         </tr>
                         <tr>
+                            <td class="w3-center w3- " colspan="2 ">Website: mtsn2kudus.sch.id</td>
+                        </tr>
+                        <tr>
                             <td colspan="2 " style="border-bottom: 2px solid black; "></td>
                         </tr>
                         <tr>
                             <td class="w3-center " colspan="2 "><strong>KARTU UJIAN SELEKSI CBT</strong></td>
                         </tr>
                         <tr>
-                            <td class=" ">Nomor Pendaftaran</td>
+                            <td class=" ">Username</td>
                             <td class=" ">: {{ pendaftar.nomor_pendaftaran }}</td>
                         </tr>
                         <tr>

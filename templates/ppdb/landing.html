@@ -1,20 +1,56 @@
 {% extends 'ppdb/base.html' %} {% load static %} {% block content %}
 
-<div class="w3-container w3-display-middle w3-mobile" style="width: 50%; margin: auto;">
-        <div class="w3-container w3-green w3-center">
-        <h5><b>Aplikasi Pendaftaran Online</b></h5>
-        <h4>MTs Negeri 2 Kudus</h4>
+<body class="">
+    <div class="w3-container w3-card-2 w3-green w3-mobile" style="width: 50%; margin: auto; margin-top: 50px; margin-bottom: 100px;">
+        <div class="w3-container w3-center">
+            <h5><b>Aplikasi Pendaftaran Online</b></h5>
+            <img src="{% static "kemenag_warna.png" %}" alt="Kemenag" style="width: 30%; height: auto;" />
+            <h4 style="font-size: 24pt; font-weight: bold;">MTs Negeri 2 Kudus</h4>
         </div>
-        <div class="w3-card-2 w3-container">
+        <div class="w3-container w3-card-2 w3-light-grey">
             <p></p>
-            <h3 class="w3-center"><a href="{% url 'pendaftar_new' %}"><button class="w3-button w3-red"><b>Daftar</b></button></a></h3>
+            <h3 class="w3-center"><a href="{% url 'pendaftar_new' %}"><button class="w3-button w3-red w3-block"><b>Daftar</b></button></a></h3>
+            <h3 class="w3-center"><a href="{% url 'input_regulang' %}"><button class="w3-button w3-green"><b>Daftar Ulang</b></button></a></h3>
             <p class="w3-center">atau</p>
-			<p class="w3-center w3-tiny"><a href="{% url 'login' %}"><button class="w3-button w3-green"><b>Login</b></button></a></p>
-			<hr>
-            <p>alpine v.0.1</p>
-		</div>
-</div>
-        
-
-
+            <p class="w3-center w3-tiny">
+                <a href="{% url 'login' %}">
+                    <button class="w3-button w3-blue"><b>Login</b></button>
+                </a>
+            </p>
+        </div>
+        <div class="w3-container w3-card-2 w3-light-grey" style="margin-top: 30px;">
+            <h4 class="w3-container"><strong>JADWAL PENTING</strong></h4>
+            <table class="w3-table-all w3-small">
+                <tr>
+                    <td>1. Pendaftaran online</td>
+                    <td>10-21 Mei 2018</td>
+                    <td>Bebas</td>
+                </tr>
+                <tr>
+                    <td>2. Verifikasi berkas</td>
+                    <td>21-25 Mei 2018</td>
+                    <td>Pukul 08.00 - 12.00 WIB</td>
+                </tr>
+                <tr>
+                    <td>3. Tes Seleksi</td>
+                    <td>27 Mei 2018</td>
+                    <td>Pukul 07.00 WIB - selesai</td>
+                </tr>
+                <tr>
+                    <td>4. Pengumuman</td>
+                    <td>31 Mei 2018</td>
+                    <td>Pukul 09.00 WIB</td>
+                </tr>
+                <tr>
+                    <td>5. Registrasi Ulang</td>
+                    <td>4-6 Juni 2018</td>
+                    <td>Pukul 08.00 - 12.00 WIB</td>
+                </tr>
+            </table>
+            <p></p>
+        </div>
+        <hr>
+        <p>alpine v.0.1</p>
+    </div>
+</body>
 {% endblock %}

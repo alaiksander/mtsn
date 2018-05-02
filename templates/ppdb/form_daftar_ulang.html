@@ -1,0 +1,30 @@
+{% extends 'ppdb/base.html' %} {% load static %} {% block content %} {% load widget_tweaks %}
+<div style="margin: 0 auto; width: 50%;">
+    <div class="w3-container">FORM REGISTRASI ULANG</div>
+    <div class="w3-card w3-container">
+        <form method="POST">
+        {% csrf_token %}
+
+            <label>Masukkan Nomor Pendaftaran</label>
+            <p>{{ form.nomor_pendaftaran|add_class:"w3-input" }}</p>
+            <label>NISN</label>
+            <p>{{ form.nisn|add_class:"w3-input" }}</p>
+            <label>No. Kartu Keluarga</label>
+            <p>{{ form.kartu_keluarga|add_class:"w3-input" }}</p>
+            <label>NIK</label>
+            <p>{{ form.nik|add_class:"w3-input" }}</p>
+            <label>Nilai SKHUN</label>
+            <p>{{ form.nilai_skhun|add_class:"w3-input" }}</p>
+            <label>Prestasi</label>
+            <p>{{ form.prestasi|add_class:"w3-input" }}</p>
+            <label>Hobi</label>
+            <p>{{ form.hobi|add_class:"w3-input" }}</p>
+            <label>Cita-cita</label>
+            <p>{{ form.cita_cita|add_class:"w3-input" }}</p>
+    </div>
+    <div class="w3-container">
+        Setuju untuk Daftar Ulang?
+        <p>{{ form.daftar_ulang|add_class:"w3-checkbox" }} Dengan menyatakan bersedia untuk daftar ulangan, maka anda resmi menjadi Peserta Didik di MTs Negeri 2 Kudus dan bersedia mentaati semua peraturan dan kebijakannya. 
+    </div>
+</div>
+    {% endblock %}

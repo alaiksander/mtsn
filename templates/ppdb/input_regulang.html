@@ -1,0 +1,10 @@
+{% extends 'ppdb/base.html' %} {% block content %}
+<div class="w3-container w3-display-middle w3-card-2" style="width: 50%;">
+<div class="w3-green w3-center"><h3>FORM REGISTRASI ULANG</h3></div>
+<div>Silahkan masukan Nomor Pendaftaran anda!
+<form method='GET' action=''>
+<input class='w3-input' type='text' name='q' placeholder='Nomor pendaftaran' value='{{ request.GET.q }}'/>
+<p><input class='w3-button w3-green' type='submit' value='Daftar Ulang' /></p>
+</form>
+</div>
+{% endblock %}

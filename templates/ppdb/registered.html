@@ -1,2 +1,35 @@
-<h2>Anda Telah terdaftar!</h2>
-Silahkan 
+{% extends 'ppdb/base.html' %} {% load static %} {% block content %}
+<div class="w3-container w3-display-middle w3-mobile w3-light-grey" style="width: 50%; margin: 0 auto;">
+<h4 class="w3-center"><strong>Selamat anda telah terdaftar!</strong></h4>
+<div class="w3-container w3-card-2 w3-green">
+<h5 class="w3-center"><strong>DETAIL PENDAFTARAN</strong></h5>
+<table class="w3-table-all">
+	<tr>
+		<td>Nomor pendaftaran</td>
+		<td> : {{ pendaftar_no }}</td>
+	</tr>
+	<tr>
+		<td>Nama</td>
+		<td> : {{ pendaftar_nama }}</td>
+	</tr>
+	<tr>
+		<td>Tempat, Tanggal lahir</td>
+		<td> : {{ pendaftar_tempat_lahir }}, {{ pendaftar_tanggal_lahir|date:"j F Y " }}</td>
+	</tr>
+	<tr>
+		<td>Asal Sekolah</td>
+		<td> : {{ pendaftar_asal_sekolah }}</td>
+	</tr>
+</table>
+
+<ul>
+	<p><strong>PERHATIAN!</strong></p>
+	<li>Catat dan sampaikan kepada panitia ketika di tanyakan!</li>
+	<li>Silahkan mengirim berkas persyaratan kepada panitia mulai tanggal 21 - 25 Mei 2018 Pukul 08:00 - 12:00 WIB di Ruang Pendaftaran.</li>
+	<li>Bagi pendaftar yang tidak mengirimkan berkas kepada panitia, maka pendaftar dianggap gugur.</li>
+</ul>
+</div>
+
+<div class="w3-display-container"><a href="{% url 'landing' %}"><button class="w3-button w3-red w3-display-middle">>> klik SELESAI <<</button></a></div>
+</div>
+{% endblock %}

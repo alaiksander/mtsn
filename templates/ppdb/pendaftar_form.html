@@ -39,9 +39,10 @@
             <label>Anak ke-</label>
             <p>{{ form.anak_ke|add_class:"w3-input" }}</p>
             <label>Saudara Kandung</label>
-            <p>{{ form.jumlah_saudara_kandung|add_class:"w3-input" }}</p>
-            <label class="w3-container">Asal Sekolah</label>
+            <p>{{ form.jumlah_saudara_kandung|add_class:"w3-input"|append_attr:"placeholder: Kosongkan jika tidak ada" }}</p>
+            <label class="w3-container">Jenis Sekolah</label>
             <p>{{ form.jenis_sekolah|add_class:"w3-input" }}</p>
+            <label class="w3-container">Asal Sekolah</label>
             <p>{{ form.asal_sekolah|add_class:"w3-input"|append_attr:"placeholder: Nama lengkap sekolah/madrasah " }}</p>
         </div>
     </div>
@@ -70,7 +71,7 @@
             <label>Alamat Orang Tua</label>
             <p>{{ form.alamat_orang_tua|add_class:"w3-input" }}</p>
             <label>No.Telepon </label>
-            <p>{{ form.no_telepon|add_class:"w3-input" }}</p>
+            <p>{{ form.no_telepon|add_class:"w3-input"|append_attr:"placeholder: HP/Telepon aktif" }}</p>
         </div>
     </div>
     <div class="w3-container w3-mobile" style="width: 40%; margin: auto; margin-bottom: 40px;">
@@ -160,7 +161,7 @@
     {% if form.errors %} {% for error in form.errors %}
     <p id="error_{{ forloop.counter }}_id)" class="help-block"> </p>
         <strong>{{ error }}</strong> {% endfor %} {% endif %}
-        <div class="" style="margin: auto; width: 20%;"><b><input type="submit" name="submit" value="DAFTAR" class="w3-button w3-green w3-block"></b></div>
+        <div class="" style="margin: auto; width: 20%; margin-bottom: 100px"><b><input type="submit" name="submit" value="DAFTAR" class="w3-button w3-green w3-block"></b></div>
 </form>
 </div>
 </div>
